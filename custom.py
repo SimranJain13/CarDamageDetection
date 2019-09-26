@@ -126,7 +126,7 @@ class CustomConfig(Config):
 
     # Give the configuration a recognizable name
 
-    NAME = ""
+    NAME = "damage"
 
 
 
