@@ -78,7 +78,7 @@ import matplotlib.pyplot as plt
 
 # Root directory of the project
 
-ROOT_DIR = os.path.abspath("/data/Mask_RCNN-master/")
+ROOT_DIR = os.path.abspath("")
 
 
 
@@ -94,7 +94,7 @@ from mrcnn import model as modellib, utils
 
 # Path to trained weights file
 
-COCO_WEIGHTS_PATH = "/data/Mask_RCNN-master/mask_rcnn_coco.h5"
+COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 
 
 
@@ -182,7 +182,7 @@ class CustomDataset(utils.Dataset):
 
         # Add classes. We have only one class to add.
 
-        self.add_class("", 1, "")
+        self.add_class("damage", 1, "damage")
 
 
 
@@ -272,7 +272,7 @@ class CustomDataset(utils.Dataset):
 
             self.add_image(
 
-                "",  ## for a single class just add the name here
+                "damage",  ## for a single class just add the name here
 
                 image_id=a['filename'],  # use file name as a unique image id
 
@@ -302,7 +302,7 @@ class CustomDataset(utils.Dataset):
 
         image_info = self.image_info[image_id]
 
-        if image_info["source"] != "":
+        if image_info["source"] != "damage":
 
             return super(self.__class__, self).load_mask(image_id)
 
@@ -342,7 +342,7 @@ class CustomDataset(utils.Dataset):
 
         info = self.image_info[image_id]
 
-        if info["source"] == "":
+        if info["source"] == "damage":
 
             return info["path"]
 
@@ -612,7 +612,9 @@ if __name__ == '__main__':
 
     elif args.command == "splash":
 
-        assert args.image or args.video, "Provide --image or --video to apply color splash"
+        assert args.image or args.video,\
+
+               "Provide --image or --video to apply color splash"
 
 
 
