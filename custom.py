@@ -78,7 +78,7 @@ import matplotlib.pyplot as plt
 
 # Root directory of the project
 
-ROOT_DIR = os.path.abspath("")
+ROOT_DIR = os.path.abspath("/data/CarDamageDetection/")
 
 
 
@@ -94,7 +94,7 @@ from mrcnn import model as modellib, utils
 
 # Path to trained weights file
 
-COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
+COCO_WEIGHTS_PATH = "/data/CarDamageDetection/mask_rcnn_coco.h5"
 
 
 
@@ -612,9 +612,7 @@ if __name__ == '__main__':
 
     elif args.command == "splash":
 
-        assert args.image or args.video,\
-
-               "Provide --image or --video to apply color splash"
+        assert args.image or args.video, "Provide --image or --video to apply color splash"
 
 
 
